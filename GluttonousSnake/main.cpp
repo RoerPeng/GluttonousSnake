@@ -69,8 +69,7 @@ void Game()
 			}
 			Sleep(10);
 		} while (!_kbhit());
-	}
-	
+	}	
 
 	snake.DestroySnake();	
 	system("cls");
