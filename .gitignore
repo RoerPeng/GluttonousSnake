@@ -47,3 +47,6 @@ Temporary Items
 .apdisk
 x64
 .vs
+*.sln
+*.VC.db
+*.VC.VC.opendb
