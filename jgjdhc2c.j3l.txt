@@ -1,0 +1,25 @@
+﻿Add new branch
+
+add new branch
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch new_m
+# Changes to be committed:
+#	modified:   .gitignore
+#	modified:   .vs/GluttonousSnake/v14/.suo
+#	modified:   GluttonousSnake.VC.db
+#	modified:   GluttonousSnake/GluttonousSnake.vcxproj.user
+#	modified:   GluttonousSnake/main.cpp
+#	modified:   GluttonousSnake/x64/Debug/GluttonousSnake.log
+#	modified:   GluttonousSnake/x64/Debug/GluttonousSnake.tlog/CL.write.1.tlog
+#	modified:   GluttonousSnake/x64/Debug/GluttonousSnake.tlog/link.read.1.tlog
+#	modified:   GluttonousSnake/x64/Debug/Snake.obj
+#	modified:   GluttonousSnake/x64/Debug/main.obj
+#	modified:   GluttonousSnake/x64/Debug/vc140.idb
+#	modified:   GluttonousSnake/x64/Debug/vc140.pdb
+#	modified:   x64/Debug/GluttonousSnake.exe
+#	modified:   x64/Debug/GluttonousSnake.ilk
+#	modified:   x64/Debug/GluttonousSnake.pdb
+#
+

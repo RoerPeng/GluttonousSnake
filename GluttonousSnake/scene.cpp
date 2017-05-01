@@ -15,12 +15,14 @@ Scene::~Scene()
 {
 }
 
-void Scene::gotoxy(int x, int y)
+void Scene::gotoxy(int x, int y , unsigned short ForeColor = FOREGROUND_INTENSITY)
 {
 	COORD pos;
 	pos.X = x ;
 	pos.Y = y;
 	SetConsoleCursorPosition(hOut,pos);
+
+	SetConsoleTextAttribute(hOut, ForeColor);
 }
 
 
@@ -45,11 +47,12 @@ void Scene::InitScene()
 
 
 
-void Scene::SetCell(int x, int y , char ch)
+void Scene::SetCell(int x, int y , char ch ,
+					unsigned short ForeColor)
 {
 	board[x][y] = ch;
 
-	gotoxy(y * 2, x);
+	gotoxy(y * 2, x , ForeColor);
 	cout << ch;
 	gotoxy(0, length);
 

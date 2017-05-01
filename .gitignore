@@ -48,4 +48,5 @@ Temporary Items
 x64
 .vs
 *.sln
-*.VC.*
+*.VC.db
+*.VC.VC.opendb
