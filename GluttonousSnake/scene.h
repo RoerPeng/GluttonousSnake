@@ -21,7 +21,7 @@ public:
 
 	void InitScene();
 	
-	void SetCell(int x, int y , char ch);
+	void SetCell(int x, int y , char ch, unsigned short ForeColor = FOREGROUND_INTENSITY);
 
 	void SetScore(int score);
 
@@ -34,7 +34,7 @@ public:
 
 	~Scene();
 
-	 void gotoxy(int x, int y);
+	 void gotoxy(int x, int y, unsigned short ForeColor);
 
 	 HANDLE hOut;
 

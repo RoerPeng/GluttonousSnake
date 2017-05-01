@@ -13,7 +13,7 @@ Snake::~Snake()
 
 }
 
-void Snake::InitSnake()
+void Snake::InitSnake(int x , int y)
 {
 	list = new Note;
 
@@ -21,11 +21,11 @@ void Snake::InitSnake()
 	{
 		if (i == 0)
 		{
-			tail=AddNote(2, i + 1);
+			tail=AddNote(2+x, i + 1+y);
 		}
 		else
 		{
-			AddNote(2, i + 1);
+			AddNote(2+x, i + 1+y);
 		}
 	}
 
@@ -39,11 +39,11 @@ Snake::Note * Snake::AddNote(int x, int y)
 	newOne->next = NULL;
 	if (list->next != NULL)
 	{
-		scene.SetCell(list->next->x, list->next->y, 'o');
+		scene.SetCell(list->next->x, list->next->y, 'o' ,color);
 	}
 	newOne->next = list->next;
 	list->next = newOne;
-	scene.SetCell(newOne->x, newOne->y, 'a');
+	scene.SetCell(newOne->x, newOne->y, 'a', color);
 	++score;
 
 	return newOne;

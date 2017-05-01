@@ -20,35 +20,64 @@ void Game()
 	food.PlaceFood();
 	
 	Snake snake(scene,food);
-	snake.InitSnake();
+	snake.color = FOREGROUND_RED;
+
+	snake.InitSnake(2,2);
+
+	Snake snake2(scene, food);
+	snake2.color = FOREGROUND_GREEN;
+	snake2.InitSnake(8, 2);
 	
-	int tick = clock();
+	snake.ticker =  snake2.ticker = clock();
 
 
-	char moveKey = 'd';
+	//int tick = clock();
+	//int tick2 = clock();
+
+	 snake.moveKey = 'd';
+	 snake2.moveKey = 'd';
 	char key = 'd';
 	while (true)
 	{
 		key = _getch();
-		if (key == '8')key = MOVE_KEY::UP;
-		if (key == '5')key = MOVE_KEY::DOWN;
-		if (key == '4')key = MOVE_KEY::LEFT;
-		if (key == '6')key = MOVE_KEY::RIGHT;
+		if (key == '8' || key == '5' || key == '4' || key == '6')
+		{	
+			char key2;
+			if (key == '8')key2 = MOVE_KEY::UP;
+			if (key == '5')key2 = MOVE_KEY::DOWN;
+			if (key == '4')key2 = MOVE_KEY::LEFT;
+			if (key == '6')key2 = MOVE_KEY::RIGHT;
 
-		if (key == MOVE_KEY::UP || key == MOVE_KEY::DOWN ||
-			key == MOVE_KEY::LEFT || key == MOVE_KEY::RIGHT)
-		{
-			if ((moveKey == MOVE_KEY::DOWN &&  moveKey == MOVE_KEY::UP) ||
-				(moveKey == MOVE_KEY::UP &&  moveKey == MOVE_KEY::DOWN) ||
-				(moveKey == MOVE_KEY::LEFT &&  moveKey == MOVE_KEY::RIGHT) ||
-				(moveKey == MOVE_KEY::RIGHT &&  moveKey == MOVE_KEY::LEFT) )
+			if ((snake2.moveKey == MOVE_KEY::DOWN &&   snake2.moveKey == MOVE_KEY::UP) ||
+				(snake2.moveKey == MOVE_KEY::UP &&   snake2.moveKey == MOVE_KEY::DOWN) ||
+				(snake2.moveKey == MOVE_KEY::LEFT &&   snake2.moveKey == MOVE_KEY::RIGHT) ||
+				(snake2.moveKey == MOVE_KEY::RIGHT &&   snake2.moveKey == MOVE_KEY::LEFT))
 			{
 
 			}
 			else
 			{
-				moveKey = key;
-				tick = 0;
+				snake2.moveKey = key2;
+				snake2.ticker = 0;
+			}
+			
+		}
+
+
+		if (key == MOVE_KEY::UP || key == MOVE_KEY::DOWN ||
+			key == MOVE_KEY::LEFT || key == MOVE_KEY::RIGHT)
+		{
+			if ((snake.moveKey == MOVE_KEY::DOWN &&   snake.moveKey == MOVE_KEY::UP) ||
+				(snake.moveKey == MOVE_KEY::UP &&   snake.moveKey == MOVE_KEY::DOWN) ||
+				(snake.moveKey == MOVE_KEY::LEFT &&   snake.moveKey == MOVE_KEY::RIGHT) ||
+				(snake.moveKey == MOVE_KEY::RIGHT &&   snake.moveKey == MOVE_KEY::LEFT) )
+			{
+
+			}
+			else
+			{
+				snake.moveKey = key;
+				snake.ticker = 0;
 			}
 
 		}
@@ -57,16 +86,27 @@ void Game()
 		do
 		{
 
-			if ( ( clock() - tick ) >= 500)
-			{
-				int reslut = snake.SnakeMove((MOVE_KEY)moveKey);
-				if (reslut == -1)
+			if ( ( clock() - snake2.ticker ) >= 500)
+			{	
+			
+
+				if (snake2.SnakeMove((MOVE_KEY)snake2.moveKey) == -1)
 				{
-					cout << "GAME OVER !" << endl;
-					break;
+					//snake2.DestroySnake();
 				}
-				tick = clock();
+
+				snake2.ticker = clock();
 			}
+
+			if ((clock() - snake.ticker) >= 500)
+			{
+				if (snake.SnakeMove((MOVE_KEY)snake.moveKey) == -1)
+				{
+					//snake.DestroySnake();
+				}
+				snake.ticker = clock();
+			}
+
 			Sleep(10);
 		} while (!_kbhit());
 	}
